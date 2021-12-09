@@ -4,26 +4,61 @@
 
 #Take user input, use conditionals to match word to list, set guess limit; create code for displaying if won or lost (if lost, maybe reset button?), high score determined by number of guesses, game start button
 
-#Extras(if enough time): High scores, personalize text color?, 
+#Extras(if enough time): High scores, personalize text color?
 
+guessCount = 3
 
 print("Guessing Words Game Begin!")
 
-wordList = ["Peach", "Banana", "Orange", "Strawberry", "Kiwi", "Apple", "Watermelon", "Bluberry", "Lemon", "Fig", "Grape", "Tomato", "Guava", "Mango", "Laychee", "Cherry", "Baseball", "Basketball", "Tennis", "Football","Volleyball", "Badminton", "Soccer", "Hockey", "Table Tennis", "Soft Ball", "Surfing", "Archery"];
+fruitList = [
+    "Strawberry", "Apple", "Watermelon", "Tomato", "Laychee", "Cherry"
+]
 
-userResponse = input("Guess what word it is? ")
+sportsList = [
+    "Hockey", "Badminton", "Surfing", "Archery", "Frisbee", "Swimming"
+]
 
-# Lets assume word is not found
-found = False
+fruitHint = "Hint: These fruits are red"
 
-# Lets try and see if word is found?
-for word in wordList:
-    if userResponse == word:
-        print("You are correct!")
-        found = True
+sportsHint = "Hint: These sports don't include a ball"
 
-if found == False:
-    print("You are incorrect")
+categoryChoice = False
 
-# Note from Tomas: Feel free to hit me up on slack if you have any question in between classes :)
-# (And remember to commit this to git :)
+while categoryChoice == False:
+    userChoice = input("Pick a category: Fruits or Sports: ")
+
+    if str.lower(userChoice) == "fruits":
+        wordList = fruitList
+        wordHint = fruitHint
+        categoryChoice = True
+
+    elif str.lower(userChoice) == "sports":
+        wordList = sportsList
+        wordHint = sportsHint
+        categoryChoice = True
+
+    else:
+        print("Invalid category, try again")
+
+for guess in range(guessCount):
+    print("- You have " + str(guessCount) + " guesse(s) left!")
+    if guessCount == 1:
+        print(wordHint)
+    userResponse = input("Guess what word it is! ")
+
+    # Lets assume word is not found
+    found = False
+
+    # Lets try and see if word is found?
+    for word in wordList:
+        if str.lower(userResponse) == str.lower(word):
+            print("You are correct!")
+            found = True
+
+    if found == False:
+        print("You are incorrect")
+
+    else:
+        break
+
+    guessCount = guessCount - 1

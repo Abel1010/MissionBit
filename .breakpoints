@@ -1,10 +1,18 @@
 {
   "files": {
+    ".replit": [
+      {
+        "id": "d400d49f-f897-4015-a461-361bbed007d1",
+        "line": 2,
+        "version": 2,
+        "index": 21
+      }
+    ],
     "main.py": [
       {
         "id": "b294fce8-9203-4c25-8ccc-d541a654fe8a",
         "line": 1,
-        "version": 2294,
+        "version": 3243,
         "index": 0
       }
     ]
